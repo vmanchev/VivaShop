@@ -1,0 +1,47 @@
+
+{% extends "VivaShopBundle:Layouts:admin.main.twig" %}
+
+{% block title %} | Edit your profile{% endblock %}
+
+{% block content %}
+<h3>Update your profile</h3>
+
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <div>
+        {{ form_label(form.name) }}
+        <div>
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+    </div>
+
+    <div>
+        {{ form_label(form.username) }}
+        <div>
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
+        </div>
+    </div>
+
+    <div>
+        <div>
+            {{ form_widget(form.password) }}
+            {{ form_errors(form.password) }}
+        </div>
+    </div>
+
+
+
+    {{ form_row(form.submit_profile, {'attr': {'class': 'btn btn-sm btn-primary pull-left'}}) }}
+
+{{ form_end(form) }}
+{% endblock %}

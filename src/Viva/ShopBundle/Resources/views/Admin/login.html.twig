@@ -1,0 +1,44 @@
+
+{% extends "VivaShopBundle:Layouts:admin.main.twig" %}
+
+{% block title %} | Login{% endblock %}
+
+{% block content %}
+<h3>Admin Login</h3>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success">
+        {{ flashMessage|raw }}
+    </div>
+{% endfor %}
+
+{% if error %}
+    <div class="alert alert-error">
+        {{ error|trans }}
+    </div>
+{% endif %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <div>
+        {{ form_label(form.username) }}
+        <div>
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
+        </div>
+    </div>
+
+    <div>
+        {{ form_label(form.password) }}
+        <div>
+            {{ form_widget(form.password) }}
+            {{ form_errors(form.password) }}
+        </div>
+    </div>
+
+    {{ form_row(form.submit_login, {'attr': {'class': 'btn btn-sm btn-primary pull-left'}}) }}
+
+    <a href="{{ path('viva_shop_admin_forgot') }}" class="btn btn-link">Forgot password?</a>
+    
+{{ form_end(form) }}
+{% endblock %}

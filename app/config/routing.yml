@@ -1,0 +1,4 @@
+viva_shop:
+    resource: "@VivaShopBundle/Resources/config/routing.php"
+    prefix:   /
+

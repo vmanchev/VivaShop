@@ -1,0 +1,32 @@
+
+{% extends "VivaShopBundle:Layouts:admin.main.twig" %}
+
+{% block title %} | Password Recovery{% endblock %}
+
+{% block content %}
+<h3>Password Recovery</h3>
+
+{% if errors %}
+<div class="alert alert-error">
+    <ul>
+        {% for error in errors %}
+            <li>{{ error.message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <div>
+        {{ form_label(form.username) }}
+        <div>
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
+        </div>
+    </div>
+
+    {{ form_row(form.submit_forgot, {'attr': {'class': 'btn btn-sm btn-primary'}}) }}
+
+{{ form_end(form) }}
+{% endblock %}

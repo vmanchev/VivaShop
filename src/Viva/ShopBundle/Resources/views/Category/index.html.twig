@@ -1,0 +1,14 @@
+{% extends "VivaShopBundle:Layouts:admin.main.twig" %}
+
+{% block title %} | Categories list{% endblock %}
+
+{% block content %}
+<h3>Categories</h3>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% endblock %}

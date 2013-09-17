@@ -1,0 +1,39 @@
+security:
+    encoders:
+        Viva\ShopBundle\Entity\Admin:
+            algorithm: sha1
+            iterations: 1
+            encode_as_base64: false          
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        administrators:
+            entity: {class: VivaShopBundle:Admin, property: username}
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+         
+        admin_area:
+          pattern: ^/admin
+          anonymous: ~
+          form_login: 
+            check_path: /admin/login_check
+            login_path: /admin/login
+            username_parameter: viva_shopbundle_admin[username]
+            password_parameter: viva_shopbundle_admin[password]
+            default_target_path: /admin
+          logout:
+            path: /admin/logout
+            target: /admin/login
+            invalidate_session: false
+
+    access_control:
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/forgot, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/reset, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

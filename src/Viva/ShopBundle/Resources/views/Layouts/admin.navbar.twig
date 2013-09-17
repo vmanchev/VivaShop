@@ -1,0 +1,46 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <a class="brand" href="#">VivaShop Admin</a>
+
+    {% if app.user %}
+        <ul class="nav">
+            <li{% if app.request.attributes.get('_route') == 'viva_shop_admin_homepage' %} class="active"{% endif %}>
+                <a href="{{ path('viva_shop_admin_homepage') }}">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Orders</a>
+            </li>
+            <li>
+                <a href="#">Clients</a>
+            </li>
+            <li>
+                <a href="#">Catalog</a>
+            </li>
+            <li class="dropdown{% if 
+                                    app.request.attributes.get('_route') 
+                                    in 
+                                    [
+                                        'viva_shop_category_index', 
+                                        'viva_shop_category_create',
+                                        'viva_shop_category_edit',
+                                        'viva_shop_category_delete'
+                                    ] %} active{% endif %}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Categories
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('viva_shop_category_index') }}">List categories</a></li>
+                    <li><a href="{{ path('viva_shop_category_create') }}">Add new category</a></li>
+                </ul>          
+            </li>
+            <li{% if app.request.attributes.get('_route') == 'viva_shop_admin_profile' %} class="active"{% endif %}>
+                <a href="{{ path('viva_shop_admin_profile') }}">Profile</a>
+            </li>
+            <li{% if app.request.attributes.get('_route') == 'viva_shop_admin_logout' %} class="active"{% endif %}>
+                <a href="{{ path('viva_shop_admin_logout') }}">Logout</a>
+            </li>
+        </ul>
+    {% endif %}
+    </div>
+</div>
