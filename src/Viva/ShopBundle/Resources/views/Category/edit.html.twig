@@ -4,4 +4,19 @@
 
 {% block content %}
 <h3>Edit category "{{ category.name }}"</h3>
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <div>
+        {{ form_label(form.name) }}
+        <div>
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+    </div>
+
+    {{ form_row(form.submit, {'attr': {'class': 'btn btn-sm btn-primary'}}) }}
+
+{{ form_end(form) }}
+
 {% endblock %}

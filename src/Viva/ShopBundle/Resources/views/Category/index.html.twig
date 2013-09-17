@@ -11,4 +11,36 @@
     </div>
 {% endfor %}
 
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-error">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+
+{% if categories %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th width="400">Category</th>
+            <th width="100">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td align="center">
+                    <a href="{{ path('viva_shop_category_edit', {'id': category.id}) }}"><i class="icon-edit"></i></a> 
+                    <a href="{{ path('viva_shop_category_delete', {'id': category.id}) }}"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+    {% endfor %}    
+    </tbody>
+</table>
+
+
+{% endif %}
+
 {% endblock %}

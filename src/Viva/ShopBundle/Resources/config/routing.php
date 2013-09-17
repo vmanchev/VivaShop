@@ -46,11 +46,11 @@ $collection->add('viva_shop_category_create', new Route('/admin/category/create'
     '_controller' => 'VivaShopBundle:Category:create'
 )));
 
-$collection->add('viva_shop_category_edit', new Route('/admin/category/edit', array(
+$collection->add('viva_shop_category_edit', new Route('/admin/category/edit/{id}', array(
     '_controller' => 'VivaShopBundle:Category:edit'
 )));
 
-$collection->add('viva_shop_category_delete', new Route('/admin/delete', array(
+$collection->add('viva_shop_category_delete', new Route('/admin/category/delete/{id}', array(
     '_controller' => 'VivaShopBundle:Category:delete'
 )));
 
