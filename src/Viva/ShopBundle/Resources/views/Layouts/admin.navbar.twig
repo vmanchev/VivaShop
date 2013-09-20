@@ -13,8 +13,23 @@
             <li>
                 <a href="#">Clients</a>
             </li>
-            <li>
-                <a href="#">Catalog</a>
+            <li class="dropdown{% if 
+                                    app.request.attributes.get('_route') 
+                                    in 
+                                    [
+                                        'viva_shop_catalog_index', 
+                                        'viva_shop_catalog_create',
+                                        'viva_shop_catalog_edit',
+                                        'viva_shop_catalog_delete'
+                                    ] %} active{% endif %}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Catalog
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('viva_shop_catalog_index') }}">Items catalog</a></li>
+                    <li><a href="{{ path('viva_shop_catalog_create') }}">Add new item</a></li>
+                </ul>          
             </li>
             <li class="dropdown{% if 
                                     app.request.attributes.get('_route') 

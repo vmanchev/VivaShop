@@ -217,13 +217,3 @@ class AdminController extends Controller {
     }
 
 }
-
-
-/**
- * 
-
-http://www.google.com/a/blue-leaf.co.uk
- 
-Email address: venelin.manchev@blue-leaf.co.uk
-Password: v3nel!n45
- */

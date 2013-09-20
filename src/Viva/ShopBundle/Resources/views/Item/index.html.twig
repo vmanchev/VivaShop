@@ -1,0 +1,50 @@
+{% extends "VivaShopBundle:Layouts:admin.main.twig" %}
+
+{% block title %} | Catalog home{% endblock %}
+
+{% block content %}
+<h3>Catalog</h3>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-error">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+
+{% if items %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th width="400">Item</th>
+            <th width="200">Category</th>
+            <th width="150">Price</th>
+            <th width="100">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for item in items %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.category.name }}</td>
+                <td>{{ item.price }}</td>
+                <td align="center">
+                    <a href="{{ path('viva_shop_catalog_edit', {'id': item.id}) }}"><i class="icon-edit"></i></a> 
+                    <a href="{{ path('viva_shop_catalog_delete', {'id': item.id}) }}"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+    {% endfor %}    
+    </tbody>
+</table>
+
+
+{% endif %}
+
+{% endblock %}

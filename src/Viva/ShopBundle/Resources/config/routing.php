@@ -54,4 +54,23 @@ $collection->add('viva_shop_category_delete', new Route('/admin/category/delete/
     '_controller' => 'VivaShopBundle:Category:delete'
 )));
 
+/**
+ * Catalog
+ */
+$collection->add('viva_shop_catalog_index', new Route('/admin/item', array(
+    '_controller' => 'VivaShopBundle:Item:index'
+)));
+
+$collection->add('viva_shop_catalog_create', new Route('/admin/item/create', array(
+    '_controller' => 'VivaShopBundle:Item:create'
+)));
+
+$collection->add('viva_shop_catalog_edit', new Route('/admin/item/edit/{id}', array(
+    '_controller' => 'VivaShopBundle:Item:edit'
+)));
+
+$collection->add('viva_shop_catalog_delete', new Route('/admin/item/delete/{id}', array(
+    '_controller' => 'VivaShopBundle:Item:delete'
+)));
+
 return $collection;

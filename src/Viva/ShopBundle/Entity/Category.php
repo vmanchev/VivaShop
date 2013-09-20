@@ -3,6 +3,7 @@
 namespace Viva\ShopBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Viva\ShopBundle\Entity\Item;
 
 /**
  * Category
@@ -28,7 +29,12 @@ class Category
      */
     private $name;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="category")
+     */
+    private $items;
+    
+    
     /**
      * Get id
      *
@@ -65,5 +71,45 @@ class Category
     public function getAll()
     {
         
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add items
+     *
+     * @param \Viva\ShopBundle\Entity\Item $items
+     * @return Category
+     */
+    public function addItem(\Viva\ShopBundle\Entity\Item $items)
+    {
+        $this->items[] = $items;
+    
+        return $this;
+    }
+
+    /**
+     * Remove items
+     *
+     * @param \Viva\ShopBundle\Entity\Item $items
+     */
+    public function removeItem(\Viva\ShopBundle\Entity\Item $items)
+    {
+        $this->items->removeElement($items);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 }
