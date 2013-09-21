@@ -42,7 +42,7 @@ class Item {
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="items", fetch="EAGER")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
